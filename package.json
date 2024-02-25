@@ -9,6 +9,12 @@
     "build": "echo This is a static template, there is no bundler or bundling involved!",
     "test": "jest"
   },
+  "jest": {
+    "testMatch": [
+      "**/tests/**/*.[jt]s?(x)",
+      "**/?(*.)+(spec|test).[jt]s?(x)"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/codesandbox-app/static-template.git"
