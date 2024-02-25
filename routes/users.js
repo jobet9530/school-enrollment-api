@@ -67,7 +67,7 @@ router.delete("/inactive-users", (req, res) => {
     }
 
     inactiveUsers.forEach(user => {
-      db.run("DELETE FROM users WHERE id = ?", [.id], function(err) {
+      db.run("DELETE FROM users WHERE id = ?", .id, function(err) {
         if (err) {
           console.error(err);
         } else {
