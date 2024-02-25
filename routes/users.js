@@ -6,6 +6,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const activeThreshold = 30 * 24 * 60 * 1000;
+
 router.get("/users/:id", (req, res) => {
   const id = req.params.id;
   db.get("SELECT * FROM users WHERE id = ?", [id], (err, row) => {
@@ -45,6 +47,37 @@ router.put("/", (req, res) => {
       res.status(200).json({ id, name, email, password, userType });
     },
   );
+});
+
+router.delete("/inactive-users", (req, res) => {
+  const currentTime = Date.now();
+  
+  db.all("SELECT * FROM users", [], (err, rows) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+
+    const inactiveUsers = rows.filter(user => {
+      const lastActive = new Date(user.lastActive).getTime(); // Convert to ms
+      return currentTime - lastActive > activeThreshold;
+    });
+
+    if (!inactiveUsers.length) {
+      return res.status(404).json({ message: 'No inactive users found' });
+    }
+
+    inactiveUsers.forEach(user => {
+      db.run("DELETE FROM users WHERE id = ?", [.id], function(err) {
+        if (err) {
+          console.error(err);
+        } else {
+          console.log(`Deleted with ID: ${.id}`);
+        }
+      });
+    });
+
+    res.status(200).json({ message: `${inactiveUsers.length} users deleted successfully` });
+  });
 });
 
 router.get("/", function (res) {
