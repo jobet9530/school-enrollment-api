@@ -58,7 +58,7 @@ try {
         student INTEGER,
         subject INTEGER,
         mark INTEGER,
-        FOREIGN KEY(student) REFERENCES students(id), 
+        FOREIGN KEY(student) REFERENCES students(id) 
       )
   `);
   module.exports = db;
