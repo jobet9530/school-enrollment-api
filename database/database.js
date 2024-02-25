@@ -52,6 +52,15 @@ try {
         FOREIGN KEY(course) REFERENCES courses(id)
       )
   `);
+  db.run(`
+      CREATE TABLE IF NOT EXISTS marks (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        student INTEGER,
+        subject INTEGER,
+        mark INTEGER,
+        FOREIGN KEY(student) REFERENCES students(id), 
+      )
+  `);
   module.exports = db;
 } catch (err) {
   console.error(err);
