@@ -14,7 +14,9 @@ try {
             name TEXT NOT NULL,
             email TEXT NOT NULL,
             password TEXT NOT NULL,
-            userType TEXT NOT NULL
+            userType TEXT NOT NULL,
+            studenId INTEGER,
+            FOREIGN KEY(studendId) REFERENCES students(id)
         )
     `);
   db.run(`
