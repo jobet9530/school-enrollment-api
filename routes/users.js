@@ -82,13 +82,4 @@ router.delete("/inactive-users", (req, res) => {
   });
 });
 
-router.get("/", function (res) {
-  db.all("SELECT * FROM users", [], (err, rows) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-    }
-    res.status(200).json(rows);
-  });
-});
-
 module.exports = router;
