@@ -52,6 +52,7 @@ try {
         FOREIGN KEY(course) REFERENCES courses(id)
       )
   `);
+  module.exports = db;
 } catch (err) {
   console.error(err);
 }
