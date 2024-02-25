@@ -33,3 +33,9 @@ jobs:
 
     - name: Check formatting with Prettier
       run: npm run prettier
+
+    - name: Run build
+      run: npm run build
+
+    - name: Run tests
+      run: npm run test
