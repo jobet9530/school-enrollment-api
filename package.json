@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon index.js",
     "prettier": "prettier --write '**/*.js'",
-    "build": "echo This is a static template, there is no bundler or bundling involved!"
+    "build": "echo This is a static template, there is no bundler or bundling involved!",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
