@@ -5,6 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "nodemon index.js",
+    "prettier": "prettier --write '**/*.js'",
     "build": "echo This is a static template, there is no bundler or bundling involved!"
   },
   "repository": {
@@ -29,6 +30,7 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.33.2"
+    "eslint-plugin-react": "^7.33.2",
+    "prettier": "^3.2.5"
   }
 }
