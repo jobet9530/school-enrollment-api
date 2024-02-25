@@ -1,9 +1,11 @@
 const express = require("express");
 const usersRouter = require("./routes/users");
-const db = require("./database.js");
+const db = require("./database/database.js");
 const app = express();
 const port = 3000;
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.get("/users", (req, res) => {
   db.all("SELECT * FROM users", [], (err, rows) => {
     if (err) {
@@ -15,7 +17,7 @@ app.get("/users", (req, res) => {
 
 app.get("/users/:id", (req, res) => {
   const id = req.params.id;
-  db.get("SELECT email, password FROM users WHERE id = ?", [id], (err, row) => {
+  db.get("SELECT * FROM users WHERE id = ?", [id], (err, row) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }

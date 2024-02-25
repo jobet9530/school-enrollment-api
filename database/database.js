@@ -18,10 +18,10 @@ try {
         )
     `);
   db.run(`
-        CREATE TABLE IF NOT EXIST students(
+        CREATE TABLE IF NOT EXISTS students(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             firstName TEXT NOT NULL,
-            lastName TEXT NOT NULL
+            lastName TEXT NOT NULL,
             middleName TEXT,
             address TEXT NOT NULL,
             birthDate DATETIME,
@@ -31,19 +31,19 @@ try {
             email TEXT NOT NULL,
             phoneNumber TEXT NOT NULL,
             parentName TEXT NOT NULL,
-            parentEmail TEXT NOT NULL
+            parentEmail TEXT NOT NULL,
             emergencyContact TEXT,
             FOREIGN KEY(course) REFERENCES courses(id)
         )`);
   db.run(`
-       CREATE TABLE IF NOT EXIST courses (
+       CREATE TABLE IF NOT EXISTS courses (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         courseName TEXT NOT NULL,
         courseCode TEXT NOT NULL
   )`);
 
   db.run(`
-      CREATE TABLE IF NOT EXIST subjects (
+      CREATE TABLE IF NOT EXISTS subjects (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         subjectName TEXT NOT NULL,
         subjectCode TEXT NOT NULL,
