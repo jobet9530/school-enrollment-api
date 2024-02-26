@@ -23,14 +23,6 @@ app.use((req, res, next) => {
 
 app.use("/users", usersRouter);
 
-app.use("/users", (req, res) => {
-  if (req.method === "GET") {
-    res.json({ message: "You've made a GET request to /users" });
-  } else {
-    res.status(404).json({ message: "Not found" });
-  }
-});
-
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Server listening on port ${port}`);
 });
