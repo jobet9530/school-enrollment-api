@@ -28,7 +28,7 @@ router.get("/users/:id", (req, res) => {
   });
 });
 
-router.post("/", (req, res) => {
+router.post("/users", (req, res) => {
   const { name, email, password, userType } = req.body;
   db.run(
     "INSERT INTO users (name, email, password, userType) VALUES (?, ?, ?, ?)",
