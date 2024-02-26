@@ -8,6 +8,15 @@ app.use(express.urlencoded({ extended: true }));
 
 const activeThreshold = 30 * 24 * 60 * 1000;
 
+router.get("/users", (req, res) => {
+  db.all("SELECT * FROM users", [], (err, rows) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    res.status(200).json(rows);
+  });
+});
+
 router.get("/users/:id", (req, res) => {
   const id = req.params.id;
   db.get("SELECT * FROM users WHERE id = ?", [id], (err, row) => {
