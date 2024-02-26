@@ -69,7 +69,7 @@ router.put("/", async (req, res) => {
   }
 });
 
-router.delete("/inactive-users", (req, res) => {
+router.delete("/users", (req, res) => {
   const currentTime = Date.now();
   const id = req.params;
   try {
