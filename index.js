@@ -21,7 +21,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/users", usersRouter);
+app.use("/routes/users", usersRouter);
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
